@@ -1,0 +1,83 @@
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+
+public class Robot extends TimedRobot {
+    private final  VictorSP rightMotor1 =new VictorSP(0);
+    
+    private final WPI_VictorSPX rightMotor2 =new WPI_VictorSPX(1);
+    private final WPI_VictorSPX rightMotor3 =new WPI_VictorSPX(3);
+
+    private final VictorSP lesftMotor1 = new VictorSP(3);
+    private final WPI_VictorSPX lesftMotor2 =new WPI_VictorSPX(4);
+    private final WPI_VictorSPX lesftMotor3 =new WPI_VictorSPX(5);
+    
+    
+    private final SpeedControllerGroup rightSpeedGroup =new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
+    private final SpeedControllerGroup lesfSpeedGroup =new SpeedControllerGroup(lesftMotor1, lesftMotor2, lesftMotor3);
+
+
+    
+    public class Robot extends IterativeRobot {
+    
+      private Joystick joystick;
+    
+
+  
+
+    DiferentialDrive dravetrain = new  DiferentialDrive(rightSpeedGroup, lesfSpeedGroup);
+    
+    Joystick stick = new Joystick(0);
+
+
+
+  @Override
+  public void robotInit() {
+    joystick = new Joystick(0);
+  }
+
+  @Override
+  public void robotPeriodic() {}
+
+  @Override
+  public void autonomousInit() {}
+
+  @Override
+  public void autonomousPeriodic() {}
+
+  @Override
+  public void teleopInit() {}
+
+  @Override
+  public void teleopPeriodic() {
+    double leftSpeed = joystick.getRawAxis(1);
+    double rightSpeed = joystick.getRawAxis(5);
+    // Do something with leftSpeed and rightSpeed, like setting the motor speeds for a tank drive
+    }
+    
+  }
+  }
+
+  @Override
+  public void disabledInit() {}
+
+  @Override
+  public void disabledPeriodic() {
+   
+
+  @Override
+  public void testInit() {}
+
+  @Override
+  public void testPeriodic() {
+
+    dravetrain.arcadeDrive(xSpeed, zRotation);
+     
+  }
+
+  @Override
+  public void simulationInit() {}
+
+  @Override
+  public void simulationPeriodic() {}
+}

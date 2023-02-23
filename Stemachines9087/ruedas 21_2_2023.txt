@@ -1,0 +1,63 @@
+import edu.wpi.first.wpilibj.TimedRobot;
+
+
+public class Robot extends TimedRobot {
+    private final  VictorSP rightMotor1 =new VictorSP(0);
+    private final WPI_VictorSPX rightMotor2 =new WPI_VictorSPX(1);
+    private final WPI_VictorSPX rightMotor3 =new WPI_VictorSPX(3);
+
+    private final VictorSP lesftMotor1 = new VictorSP(03);
+    private final WPI_VictorSPX lesftMotor2 =new WPI_VictorSPX(4);
+    private final WPI_VictorSPX lesftMotor3 =new WPI_VictorSPX(5);
+    
+    
+    private final SpeedControllerGroup rightSpeedGroup =new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
+    private final SpeedControllerGroup lesfSpeedGroup =new SpeedControllerGroup(lesftMotor1, lesftMotor2, lesftMotor3);
+
+
+    DiferentialDrive dravetrain = new  DiferentialDrive(rightSpeedGroup, lesfSpeedGroup);
+    
+    Joystick stick = new Joystick(0);
+
+
+
+  @Override
+  public void robotInit() {}
+
+  @Override
+  public void robotPeriodic() {}
+
+  @Override
+  public void autonomousInit() {}
+
+  @Override
+  public void autonomousPeriodic() {}
+
+  @Override
+  public void teleopInit() {}
+
+  @Override
+  public void teleopPeriodic() {}
+
+  @Override
+  public void disabledInit() {}
+
+  @Override
+  public void disabledPeriodic() {}
+
+  @Override
+  public void testInit() {}
+
+  @Override
+  public void testPeriodic() {
+
+    dravetrain.arcadeDrive(xSpeed, zRotation);
+
+  }
+
+  @Override
+  public void simulationInit() {}
+
+  @Override
+  public void simulationPeriodic() {}
+}
